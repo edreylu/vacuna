@@ -1,0 +1,10 @@
+.sinBorde.ui-panelgrid>*>tr,
+.sinBorde.ui-panelgrid .ui-panelgrid-cell {
+    border: none;
+}
+
+.transparente.ui-panelgrid>*>tr,
+.transparente.ui-panelgrid .ui-panelgrid-cell {
+    background: transparent !important;
+
+}

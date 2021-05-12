@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="REPORTE_VACUNA" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8abb5ca4-c813-40dc-a5e3-9ff6eac2c7d1">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[IlJFR0lTVFJPX1ZBQ1VOQSIgLDE1LDE1LGZjNjllMzU3LTAyNWMtNDkxYi04MTdmLTQxZjU1MzY0
+ZjE1Yzs=]]>
+	</property>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="SIRSR.xml"/>
+	<parameter name="NO_PACIENTE" class="java.lang.String">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="IMG_URL" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM "REGISTRO_VACUNA"
+WHERE 
+	 "REGISTRO_VACUNA"."NO_REGISTRO" = $P{NO_PACIENTE}]]>
+	</queryString>
+	<field name="NO_REGISTRO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="NO_REGISTRO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NO_REGISTRO"/>
+	</field>
+	<field name="APELLIDO_PATERNO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_PATERNO"/>
+		<property name="com.jaspersoft.studio.field.label" value="APELLIDO_PATERNO"/>
+	</field>
+	<field name="APELLIDO_MATERNO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="APELLIDO_MATERNO"/>
+		<property name="com.jaspersoft.studio.field.label" value="APELLIDO_MATERNO"/>
+	</field>
+	<field name="NOMBRE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NOMBRE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NOMBRE"/>
+	</field>
+	<field name="EDAD" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="EDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="EDAD"/>
+	</field>
+	<field name="FUNCION" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="FUNCION"/>
+		<property name="com.jaspersoft.studio.field.label" value="FUNCION"/>
+	</field>
+	<field name="CCT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CCT"/>
+		<property name="com.jaspersoft.studio.field.label" value="CCT"/>
+	</field>
+	<field name="CURP" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CURP"/>
+		<property name="com.jaspersoft.studio.field.label" value="CURP"/>
+	</field>
+	<field name="RFC" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="RFC"/>
+		<property name="com.jaspersoft.studio.field.label" value="RFC"/>
+	</field>
+	<field name="DOMICILIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMICILIO"/>
+	</field>
+	<field name="MUNICIPIO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MUNICIPIO"/>
+		<property name="com.jaspersoft.studio.field.label" value="MUNICIPIO"/>
+	</field>
+	<field name="AREA_CENTRAL_PERTENECE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="AREA_CENTRAL_PERTENECE"/>
+		<property name="com.jaspersoft.studio.field.label" value="AREA_CENTRAL_PERTENECE"/>
+	</field>
+	<field name="TIPO_COMORBILIDAD" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="TIPO_COMORBILIDAD"/>
+		<property name="com.jaspersoft.studio.field.label" value="TIPO_COMORBILIDAD"/>
+	</field>
+	<field name="OTRO_PADECIMIENTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="OTRO_PADECIMIENTO"/>
+		<property name="com.jaspersoft.studio.field.label" value="OTRO_PADECIMIENTO"/>
+	</field>
+	<field name="ESTATUS_VACUNA_APLICADA" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="ESTATUS_VACUNA_APLICADA"/>
+		<property name="com.jaspersoft.studio.field.label" value="ESTATUS_VACUNA_APLICADA"/>
+	</field>
+	<field name="NIVEL_EDUCATIVO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="NIVEL_EDUCATIVO"/>
+		<property name="com.jaspersoft.studio.field.label" value="NIVEL_EDUCATIVO"/>
+	</field>
+	<field name="NO_CORDE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="NO_CORDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NO_CORDE"/>
+	</field>
+	<field name="CORDE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="CORDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="CORDE"/>
+	</field>
+	<field name="NO_SEDE" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.name" value="NO_SEDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="NO_SEDE"/>
+	</field>
+	<field name="SEDE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SEDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="SEDE"/>
+	</field>
+	<field name="DOMICILIO_SEDE" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DOMICILIO_SEDE"/>
+		<property name="com.jaspersoft.studio.field.label" value="DOMICILIO_SEDE"/>
+	</field>
+	<field name="FECHA_VACUNACION_PROGRAMADA" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="FECHA_VACUNACION_PROGRAMADA"/>
+		<property name="com.jaspersoft.studio.field.label" value="FECHA_VACUNACION_PROGRAMADA"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="113" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="170" height="80" uuid="8b525b43-4cbd-4c41-9eef-985303a6bca2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{IMG_URL}+"SEP.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="190" y="22" width="366" height="20" uuid="d47c01aa-1e9c-44f5-bacf-c9cf60ae79d0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[SECRETARÍA DE EDUCACIÓN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="42" width="366" height="20" uuid="855359b9-6b03-4a8a-88d3-1a25848e426d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[UNIDAD DE ADMINISTRACIÓN Y FINANZAS
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="62" width="366" height="20" uuid="c3fbcfcc-dfe8-4cb4-95f9-0dd6dff83dbf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN GENERAL DE ADMINISTRACIÓN
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="82" width="506" height="20" uuid="de0d6a76-182b-4ebd-b60f-4aac74053b32">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[DIRECCIÓN DE TECNOLOGÍAS DE LA INFORMACIÓN
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="676" splitType="Stretch">
+			<image>
+				<reportElement x="332" y="600" width="191" height="76" uuid="78579ad5-8d13-4053-9852-219497df8b27"/>
+				<imageExpression><![CDATA[$P{IMG_URL}+"SEP.png"]]></imageExpression>
+			</image>
+			<textField pattern="#000000.###;(#000000.###-)">
+				<reportElement x="324" y="6" width="196" height="23" uuid="faf90f9f-02df-4db2-b73c-816e6f671e01"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NO_REGISTRO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="43" y="58" width="260" height="20" uuid="60af6949-7ad0-492a-bc5c-19e312ce6575">
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="SansSerif" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CURP}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="38" width="260" height="20" uuid="b53cef78-660c-40f6-9cd7-489190b8b700"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[CURP:]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="43" y="108" width="260" height="20" uuid="36b17345-dd7e-4d5b-8d40-151063de774a"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE}+" "+$F{APELLIDO_PATERNO}+" "+$F{APELLIDO_MATERNO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="88" width="260" height="20" uuid="6a4cda19-1bc8-4557-a418-9387cf0c8242"/>
+				<text><![CDATA[NOMBRE:]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="43" y="158" width="260" height="20" uuid="a73d28f9-1839-4aa9-af11-30bca49a579c"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NO_SEDE}+" "+ $F{SEDE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="138" width="260" height="20" uuid="14749d45-99ae-4c2b-89ab-ae372e68c2e4"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<text><![CDATA[SEDE:]]></text>
+			</staticText>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="43" y="178" width="260" height="20" uuid="3df65eef-5daf-49cc-971a-2cf2a8c969b7"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DOMICILIO_SEDE}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement x="327" y="35" width="198" height="162" uuid="27ab4c97-f999-445a-8d34-379f09438262"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{CCT}+" : "+$F{CURP}+" : "+$F{NOMBRE}+" "+$F{APELLIDO_PATERNO}+" "+$F{APELLIDO_MATERNO}+" : "+$F{SEDE}+" : "+$F{FECHA_VACUNACION_PROGRAMADA}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<line>
+				<reportElement x="0" y="242" width="556" height="1" uuid="846bc0aa-cc81-47fc-b8e4-ec95014393d2"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="40" y="250" width="250" height="23" uuid="a358acc7-b877-4b94-b37e-ce9ba5a4968d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recomendaciones para vacunarte
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="273" width="380" height="20" uuid="3f78af35-8fa7-4e25-bf33-a015ed713b13">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Presentar este comprobante impreso.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="333" width="380" height="20" uuid="18faaf4e-6d37-45ff-b35a-eac9618f382f"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Usar cubrebocas.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="293" width="380" height="20" uuid="e266671c-ee4f-4d91-b6f8-1b2dae35ec4c"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Presentar una identificación oficial con fotografía, vigente en original.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="313" width="380" height="20" uuid="e5a94a48-df67-45bb-b3b1-0ff0838c5c71"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Llegar a la hora que se indica en este comprobante.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="353" width="380" height="20" uuid="04980370-d7f1-4a08-9bc0-d5854464a9c5"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- No llevar niños.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="373" width="380" height="20" uuid="db3b0bfc-07c4-42a5-8685-116060cc24ae"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Procura llevar hidratación y protección contra el sol.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="393" width="380" height="20" uuid="0c249507-ebe8-42ce-a9d7-f8f4e8fcfae7"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- Si utilizas algún medicamento, no olvides tomarlo o llevarlo para no]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="413" width="380" height="20" uuid="422c62a5-1ff2-4faa-a8e5-91033d764008"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[  interrumpir tu tratamiento.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="433" width="380" height="20" uuid="6fbe397d-d7c4-4d39-ae1f-2853c03300b2"/>
+				<textElement textAlignment="Left">
+					<font size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- De no acreditar todos tus documentos no se te podrá vacunar.]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="100" y="460" width="380" height="130" uuid="735ad889-3a6f-4b96-be97-e3c7d38c529a"/>
+			</rectangle>
+			<componentElement>
+				<reportElement x="102" y="466" width="174" height="119" uuid="1a0171df-ca30-4f79-a1a8-5790ea7a1860"/>
+				<jr:QRCode xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<jr:codeExpression><![CDATA[$F{CCT}+" : "+$F{CURP}+" : "+$F{NOMBRE}+" "+$F{APELLIDO_PATERNO}+" "+$F{APELLIDO_MATERNO}+" : "+$F{SEDE}+" : "+$F{FECHA_VACUNACION_PROGRAMADA}]]></jr:codeExpression>
+				</jr:QRCode>
+			</componentElement>
+			<staticText>
+				<reportElement x="290" y="500" width="180" height="24" uuid="9b5a777a-5ea0-4c27-9600-3fe53ea2bfe9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONTROL INTERNO]]></text>
+			</staticText>
+			<textField pattern="#000000.###;(#000000.###-)">
+				<reportElement x="360" y="524" width="110" height="30" uuid="8146e7aa-c63b-4a1c-b373-d92390d4a310"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NO_REGISTRO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="290" y="524" width="70" height="30" uuid="b29e4892-9585-4155-901e-42ea25cbfdf0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO:]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM h:mm:ss a" isBlankWhenNull="true">
+				<reportElement x="43" y="200" width="480" height="35" uuid="26aa17c1-1182-4c84-857a-3ce13197d7be">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FECHA_VACUNACION_PROGRAMADA}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="40" y="6" width="280" height="23" uuid="b053fb38-6817-416c-922f-21768e2b9393">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FOLIO VACUNACION: ]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

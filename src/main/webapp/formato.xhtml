@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+        <h:outputStylesheet library="css" name="estilos.css"/>
+    </h:head>
+    <h:body>
+        <p:panelGrid style="width: 100%" styleClass="sinBorde">
+            <p:row>
+                <p:column style="width: 35%; text-align: center">
+                    <h:graphicImage value="/resources/img/logosep.png"/>
+                </p:column>
+                <p:column style="width: 65%">
+                    <p:panel header="Formato para la vacunación de docentes" style="background: #566573; height: 400px">
+                        <h:form>
+                            <p:panelGrid style="margin:  50px  auto 0px auto" styleClass="sinBorde transparente">
+                                <p:row>
+                                    <p:column>
+                                        <p:inputText maxlength="18" value="#{formatoMB.curp}" placeholder="CURP" style="width: 95%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:inputText maxlength="13" value="#{formatoMB.rfc}"  placeholder="RFC" style="width: 95%"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column>
+                                        <p:captcha label="Captcha" required="true" 
+                                                                   requiredMessage="Por favor marca la casilla de verificación"
+                                                                   language="es"/>
+                                    </p:column>
+                                </p:row>
+                                <p:row>
+                                    <p:column style="text-align: right">
+                                        <p:commandButton value="Descargar" ajax="false" actionListener="#{formatoMB.consultaDocente()}" style="margin-top: 20px" icon="fa fa-arrow-down">
+                                            <p:fileDownload value="#{formatoMB.file}" />
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:row>
+                            </p:panelGrid>
+                        </h:form>
+                    </p:panel>
+               
+                </p:column>
+            </p:row>
+        </p:panelGrid>
+    </h:body>
+</html>
+
