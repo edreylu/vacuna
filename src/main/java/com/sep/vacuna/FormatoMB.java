@@ -14,16 +14,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
+import org.primefaces.PrimeFaces;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
@@ -33,7 +33,7 @@ import org.primefaces.model.StreamedContent;
  */
 @ManagedBean
 @ViewScoped
-public class FormatoMB extends Conexion implements Serializable{
+public class FormatoMB extends Conexion implements Serializable {
 
     private String curp;
     private String rfc;
@@ -42,12 +42,14 @@ public class FormatoMB extends Conexion implements Serializable{
     private List<Docente> docentes;
     private DAO dao;
     private Docente docenteSeleccionado;
+    private boolean btnDescarga = true;
 
     @PostConstruct
     public void init() {
         dao = new DAO();
         docentes = new ArrayList();
         docenteSeleccionado = new Docente();
+
     }
 
     public String getCurp() {
@@ -90,16 +92,40 @@ public class FormatoMB extends Conexion implements Serializable{
         this.file = file;
     }
 
+    public boolean isBtnDescarga() {
+        return btnDescarga;
+    }
+
+    public void setBtnDescarga(boolean btnDescarga) {
+        this.btnDescarga = btnDescarga;
+    }
+
     public void consultaDocente() {
+        file = null;
         System.out.println("Curp: " + curp + "rfc " + rfc);
         docentes = dao.buscaDocente(curp, rfc);
         if (docentes.size() == 1) {
             docenteSeleccionado = docentes.get(0);
             generarFormato();
+        } else if (docentes.size() > 1) {
+            for (Docente docente : docentes) {
+                System.out.println("docente " + docente.getNombre());
+            }
+            /*   PrimeFaces.current().ajax().update(":frmDocenteSelect:dtDocenteSelect");*/
+            PrimeFaces.current().executeScript("PF('dlgSeleccion').show();");
+        } else {
+            System.out.println("No se encontro usuario");
         }
 
         for (Docente docente : docentes) {
             System.out.println(docente.getNoRegistro() + " " + docente.getNombre());
+        }
+    }
+
+    public void consultaDocente2() {
+        System.out.println("Curp: " + docenteSeleccionado.getCurp() + "rfc " + docenteSeleccionado.getRfc());
+        if (docenteSeleccionado != null) {
+            generarFormato();
         }
     }
 
@@ -110,30 +136,36 @@ public class FormatoMB extends Conexion implements Serializable{
 
             conn = conexion.getConexion();
             Map parameters = new HashMap();
-            
-            String imagenes = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/img/");
-            String docpdf = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/formato/VACUNA.pdf");
-            System.out.println("url: "+imagenes);
-            parameters.put("NO_PACIENTE", docenteSeleccionado.getNoRegistro());
+            String fullPath = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/%s");
+            Function<String, String> getPath = path -> String.format(fullPath, path);
+
+            String imagenes = getPath.apply("/resources/img/");
+            String outputPDF = getPath.apply("/resources/formato/VACUNA.pdf");
+            String jasperFile = getPath.apply("/resources/formato/REPORTE_VACUNA.jasper");
+            int noPaciente = docenteSeleccionado.getNoRegistro();
+            String fileName = String.format("%s.pdf", docenteSeleccionado.getCurp());
+
+            parameters.put("NO_PACIENTE", noPaciente);
             parameters.put("IMG_URL", imagenes);
 
-            String nombreArchivo = docenteSeleccionado.getCurp() + ".pdf";
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperFile, parameters, conn);
+            JasperExportManager.exportReportToPdfFile(jasperPrint, outputPDF);
+            InputStream inputSream = new FileInputStream(outputPDF);
+            file = new DefaultStreamedContent(inputSream, "application/pdf", fileName);
 
-            String jasperFile = FacesContext.getCurrentInstance().getExternalContext().getRealPath("/resources/formato/REPORTE_VACUNA.jrxml");
-            JasperReport report = JasperCompileManager.compileReport(jasperFile);
-            JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, conn);
-            JasperExportManager.exportReportToPdfFile(jasperPrint, docpdf);
-            InputStream inputS = new FileInputStream(docpdf);
-            file = new DefaultStreamedContent(inputS, "application/pdf", nombreArchivo);
-           
+            dao.actualizarFechaDescarga(docenteSeleccionado.getNoRegistro());
 
         } catch (JRException | IOException e) {
             System.out.println("Error al crear formato generarFormato()" + e.getMessage());
         } finally {
             conexion.closeAll(null, null, conn);
         }
-  return file;
+        return file;
 
-}
+    }
+
+    public void habilitaBtn() {
+        btnDescarga = false;
+    }
 
 }

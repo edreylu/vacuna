@@ -60,31 +60,60 @@ public class DAO implements Serializable{
 
         List<Docente> docentes = new ArrayList<>();
         Docente docente = null;
-        try{
+        try {
             conn = conexion.getConexion();
             preparedStatement = conn.prepareStatement(query);
             preparedStatement.setString(1, curp);
             preparedStatement.setString(2, rfc);
             rs = preparedStatement.executeQuery();
-                  
+
             while (rs.next()) {
 
                 docente = new Docente();
                 docente.setNoRegistro(rs.getInt("NO_REGISTRO"));
                 docente.setNombre(rs.getString("NOMBRE"));
                 docente.setCurp(rs.getString("CURP"));
+                docente.setRfc(rs.getString("RFC"));
                 docente.setNivelEducativo("NIVEL_EDUCATIVO");
                 docente.setNoCorde(rs.getInt("NO_CORDE"));
-                docente.setSede(rs.getString("CORDE"));
-
+                docente.setCorde(rs.getString("CORDE"));
+                docente.setSede("SEDE");
+                docente.setMunicipio("MUNICIPIO");
+                docente.setCct(rs.getString("CCT"));
                 docentes.add(docente);
             }
         } catch (SQLException e) {
             System.out.println("Error " + e.getMessage());
-        }finally{
-           conexion.closeAll(rs, preparedStatement, conn);
+        } finally {
+            conexion.closeAll(rs, preparedStatement, conn);
         }
         System.out.println("se consultaron: " + docentes.size() + " pacientes.");
         return docentes;
+    }
+    
+     public int actualizarFechaDescarga(int noRegistro) {
+        Conexion con = new Conexion();
+        Connection conn = null;
+        PreparedStatement preparedStatement = null;
+        int regreso = 0;
+
+        String query = "update registro_vacuna set FECHA_DESCARGA_FORMATO = SYSDATE WHERE NO_REGISTRO = ?";
+
+        try {
+            conn = con.getConexion();
+
+            preparedStatement = conn.prepareStatement(query);
+            preparedStatement.setInt(1, noRegistro);
+            regreso = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Hubo un error al actualizar fecha: " + e.getMessage());
+           
+        } finally {
+           
+            con.closeAll(null, preparedStatement, conn);
+        }
+
+        return regreso;
     }
 }
